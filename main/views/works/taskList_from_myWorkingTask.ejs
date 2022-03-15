@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Work List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="card-body">
+    <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+    <form action="/works/taskList>" method="post">
+        <div class="card-body">
+            <% if(data.length) { %>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">taskID</th>
+                        <th scope="col">employeeID</th>
+                        <th scope="col">taskBegin</th>
+                        <th scope="col">taskEnd</th>
+                        <th scope="col">estimatedTime</th>
+                        <th scope="col">actualTime</th>
+                        <th scope="col">taskDetail</th>
+                        <th scope="col">projectID</th>
+                        <th scope="col">taskTypeID</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i = 0; i< data.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%= (i+1) %></th>
+                            <td><%= data[i].taskID%></td>
+                            <td><%= data[i].employeeID%></td>
+                            <td><%= data[i].taskBegin.toISOString().slice(0,10)%></td>
+                            <td><%= data[i].taskEnd.toISOString().slice(0,10)%></td>
+                            <td><%= data[i].estimatedTime%></td>
+                            <td><%= data[i].actualTime%></td>
+                            <td><%= data[i].taskDetail%></td>
+                            <td><%= data[i].projectID%></td>
+                            <td><%= data[i].taskTypeID%></td>
+                            <td>
+                                <a class="btn btn-success edit" href="/works/edit/<%=data[i].taskID%>">Edit</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            <% } %>
+
+            <!-- if result is empty -->
+            <% if(!data.length) { %>
+                <p class="text-center">No Works found!</p>
+            <% } %>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

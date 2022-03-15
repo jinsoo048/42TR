@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Project List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="card-body">
+    <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+                        <form action="/works/projectList" method="post">
+                            <div class="card-body">
+                                <% if(data.length) { %>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">projectID</th>
+                                            <th scope="col">projectName</th>
+                                            <th scope="col">revenue</th>
+                                            <th scope="col">time</th>
+                                            <th scope="col">begin</th>
+                                            <th scope="col">end</th>
+                                            <th scope="col">customer</th>
+                                            <th scope="col">customerAddress</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <% for(var i = 0; i< data.length; i++) { %>
+                                            <tr>
+                                                <th scope="row"><%= (i+1) %></th>
+                                                <td><%= data[i].projectID%></td>
+                                                <td><%= data[i].projectName%></td>
+                                                <td><%= data[i].revenue%></td>
+                                                <td><%= data[i].time%></td>
+                                                <td><%= data[i].begin%></td>
+                                                <td><%= data[i].end%></td>
+                                                <td><%= data[i].customer%></td>
+                                                <td><%= data[i].customerAddress%></td>
+                                                <td>
+                                                    <a class="btn btn-success edit" href="../works/workList/<%=data[i].projectID%>">Works List</a>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                        </tbody>
+                                    </table>
+                                <% } %>
+
+                                <!-- if result is empty -->
+                                <% if(!data.length) { %>
+                                    <p class="text-center">No Works found!</p>
+                                <% } %>
+                            </div>
+                        </form>
+
+</div>
+
+</body>
+</html>

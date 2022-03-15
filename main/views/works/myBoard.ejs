@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="card-body">
+    <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+    <form action="/works/myOwnProject" method="get">
+        <div class="form-group">
+            <label>소유하고 있는 프로젝트:</label>
+            <input type="submit" class="btn btn-info btn-block" value="Project List"/>
+        </div>
+    </form>
+    <form action="/works/myWorkingTask" method="get">
+        <div class="form-group">
+            <label>수행하고 있는 태스크:</label>
+            <input type="submit" class="btn btn-info btn-block" value="Task List"/>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

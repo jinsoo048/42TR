@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Work</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body class="container" style="margin-top: 50px;">
+<% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+<% } %>
+<div class="card">
+    <div class="card-header">
+        Edit Task
+    </div>
+    <div class="card-body">
+        <form action="/works/update_from_myWorkingTask/<%= taskID %>" method="post">
+                <div class="form-group">
+                    <label>taskID:</label>
+                    <input type="number" class="form-control" name="taskID" value="<%= taskID %>" autocomplete="off">
+                </div>
+            <div class="form-group">
+                <label>employeeID:</label>
+                <input type="number" class="form-control" name="employeeID" value="<%= employeeID %>"
+                       autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label>taskBegin:</label>
+                <input type="datetime-local" class="form-control" name="taskBegin"
+                       value="<%= taskBegin.toISOString().slice(0, 16) %>" autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label>taskEnd:</label>
+                <input type="datetime-local" class="form-control" name="taskEnd"
+                       value="<%= taskEnd.toISOString().slice(0, 16) %>" autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label>estimatedTime:</label>
+                <input type="number" class="form-control" name="estimatedTime" value="<%= estimatedTime %>"
+                       autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>actualTime:</label>
+                <input type="number" class="form-control" name="actualTime" value="<%= actualTime %>"
+                       autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>taskDetail:</label>
+                <input type="text" class="form-control" name="taskDetail" value="<%= taskDetail %>" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>projectID:</label>
+                <input type="number" class="form-control" name="projectID" value="<%= projectID %>" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>taskTypeID:</label>
+                <select name="taskTypeID" value="<%= taskTypeID %>">
+                    <option value="2">project</option>
+                    <option value="1">development</option>
+                    <option value="3">project & development</option>
+                </select>
+                <br><br>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-info" value="Update_from_MWT"/>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
